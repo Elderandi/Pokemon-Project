@@ -1,0 +1,99 @@
+<html ng-app='pokeFightClub'>
+	<title>Pokemonsters</title>
+	<link rel="stylesheet" type="text/css" href="Styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Freckle+Face|Sarina|Trade+Winds|UnifrakturCook:700" rel="stylesheet">
+	<body ng-controller='control'>		
+		
+		<hr>
+
+		<div class= "top-header">
+		<div class = "left-side">
+		<span class="top" type="button" ng-click=>HOME</span>
+		<span class="top" type="button" ng-click=>SIGN UP</span>
+		<span class="top" type="button" ng-click=>LOG IN</span>
+		</div>
+
+		<div class = "right-side">
+		<img ng-src= "Images/Info.svg" class="about" type="button" ng-click='getData()'></img>
+		<img ng-src= "Images/Contact.svg" class="contact" type="button" ng-click='getData()'></img>
+		<img ng-src= "Images/Gear.svg" class="settings" type="button" ng-click='getData()'></img>
+		</div>
+		</div>
+
+		<hr>
+
+		<div class="fight-banner">
+
+<!--<img ng-src= "Images/Home.svg" class="home-side"></img>-->
+
+		<img ng-hide="enabled1" ng-src='{{pokePics2}}'><img class="blood" ng-show="enabled1" ng-src= "Images/Bloods.png">
+		<span class="vs-first"ng-class="{'dead':enabled1}">&nbsp;&nbsp;{{poke2.name}}</span>
+		
+			<img ng-src= "Images/Versus.png" class="versus"></img>
+		
+		<span class="vs-second"ng-class="{'dead':enabled2}">{{poke1.name}}&nbsp;&nbsp;</span>	
+		<img ng-hide="enabled2" ng-src='{{pokePics1}}'><img class="blood" ng-show="enabled2" ng-src= "Images/Blood.png">
+		
+<!--<img ng-src= "Images/Visitor.svg" class = "visitor-side"></img>		-->
+		
+		</div>
+		<br>
+		<span class="fight-button" name="button" ng-click="fight()">FIGHT!</span>
+		<hr>
+
+
+<div class= "clans">
+        <span class="clan" type="button" ng-click='getPokemon()'>POKEMON</span>
+		<span class="clan" type="button" ng-click='getData()'>MARIO</span>
+		<span class="clan" type="button" ng-click='getData()'>MARVEL</span>
+		<span class="clan" type="button" ng-click='getData()'>DC</span>
+		<span class="clan" type="button" ng-click='getData()'>MORTAL KOMBAT</span>
+		<span class="clan" type="button" ng-click='getData()'>STREET FIGHTER</span>
+		<span class="clan" type="button" ng-click='getData()'>STAR WARS</span>
+		<span class="clan" type="button" ng-click='getData()'>ANIMALS</span>
+		<span class="clan" type="button" ng-click='getData()'>CELEBRITIES</span>
+		<span class="clan" type="button" ng-click='getData()'>USERS</span>
+</div>		
+		<hr>
+		<span class="look">SEARCH</span><input class="search" type="text" ng-model="Search.name"></span>
+		<span class='winner'>WINNER:<span class="champ">{{winner.name}}</span>
+		<hr>
+		
+		<span class="info" ng-show="pokeData">
+			<span class="bits">ID:</span>&nbsp;&nbsp;{{pokeData.id}} &nbsp;&nbsp;&nbsp;
+			<span class="bits">Name:</span>&nbsp;&nbsp;{{pokeData.name}} &nbsp;&nbsp;&nbsp;
+			<span class="bits">Height:</span>&nbsp;&nbsp;{{pokeData.height}} &nbsp;&nbsp;&nbsp;
+			<span class="bits">Weight:</span>&nbsp;&nbsp;{{pokeData.weight}} &nbsp;&nbsp;&nbsp;
+			<span class="bits">1st Type:</span>&nbsp;&nbsp;{{pokeData.types[0].type.name}}&nbsp;&nbsp;&nbsp;
+			<span class="bits">2nd Type:</span>&nbsp;&nbsp;{{pokeData.types[1].type.name}}&nbsp;&nbsp;&nbsp;
+			<span class="bits">1st Ability:</span>&nbsp;&nbsp;{{pokeData.abilities[0].ability.name}}&nbsp;&nbsp;&nbsp;
+			<span class="bits">2nd Ability:</span>&nbsp;&nbsp;{{pokeData.abilities[1].ability.name}}&nbsp;&nbsp;&nbsp;
+			<span class="bits">3rd Ability:</span>&nbsp;&nbsp;{{pokeData.abilities[2].ability.name}}
+		</span>
+		
+		<hr>
+		
+		<div class="list" ng-repeat='pokeman in pokemon | filter: Search'>
+			
+
+			<img ng-src= "Images/Home.svg" class="home" type="button" ng-click='get2Pics(pokeman.name); setPoke2(pokeman)'>&nbsp;&nbsp;</img>
+			
+			<img ng-src= "Images/Visitor.svg" class = "visitor" type="button" ng-click='get1Pics(pokeman.name); setPoke1(pokeman)'></img>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pokeman.name}} <span class="data" type="button" ng-click='getData(pokeman.name)'>INFO</span> 
+
+			<hr>
+			
+			</div>		
+				
+				
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		<script src="App.js"></script>
+		<script src="Controller.js"></script>
+		<script src="Service.js"></script>
+	</body>
+</html>
+
+
+<!--modal-->
