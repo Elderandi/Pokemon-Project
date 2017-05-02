@@ -15,11 +15,13 @@ angular.module('pokeFightClub')
     $scope.getPokemon();
 
     $scope.setPoke1 = function(pokemon) {
-      $scope.poke1 = pokemon;
+      $scope.poke1 = pokemon; 
+      $scope.fightDone = false;
     };
 
     $scope.setPoke2 = function(pokemon) {
       $scope.poke2 = pokemon;
+      $scope.fightDone = false;
       
     };
 
