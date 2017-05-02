@@ -4,6 +4,7 @@ angular.module('pokeFightClub')
     $scope.poke1;
     $scope.poke2;
     $scope.winner;
+    $scope.fightDone = false;
 
     $scope.getPokemon = function() {
       pokeService.getPokemon()
@@ -24,7 +25,7 @@ angular.module('pokeFightClub')
 
     $scope.fight = function() {
       if(!$scope.poke1 || !$scope.poke2 || $scope.poke1.name === $scope.poke2.name) {
-        return alert('No contest! Choose a match with two different fighters.');
+        return alert('Fight command disabled! Choose a match with two different fighters.');
       }
 
       var num = Math.floor(Math.random() * (2)) + 1;
@@ -36,8 +37,7 @@ angular.module('pokeFightClub')
         $scope.winner = $scope.poke2;
         $scope.enabled2 = true;
       }
-
-
+      $scope.fightDone = true;
     };
 
 $scope.get1Pics = function(pokeName) {
@@ -83,8 +83,6 @@ if(response.data.abilities[2] === undefined){
         
 })
 }
-
-
 
   });
 
